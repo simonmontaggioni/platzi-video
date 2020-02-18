@@ -2,23 +2,34 @@ import React from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import '../assets/styles/App.scss';
-import Categories from '../components/Categories';
+import Category from '../components/Category';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
+import Footer from '../components/Footer';
 
 const App = () => (
     <div className="App">
+
         <Header></Header>
+
         <Search></Search>
-        <Categories>
+
+        <Category title = 'Movies list'>
+
             <Carousel>
+
                 <CarouselItem></CarouselItem>
                 <CarouselItem></CarouselItem>
                 <CarouselItem></CarouselItem>
                 <CarouselItem></CarouselItem>
                 <CarouselItem></CarouselItem>
+
             </Carousel>
-        </Categories>
+
+        </Category>
+
+        <Footer></Footer>
+
     </div>
 );
 

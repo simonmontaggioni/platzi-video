@@ -25,3 +25,7 @@ body {
   ::placeholder {
     color: white;
   }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
