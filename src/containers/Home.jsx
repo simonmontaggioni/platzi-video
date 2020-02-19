@@ -7,8 +7,6 @@ import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
 
 import useInitialState from '../hooks/useInitialState';
-import '../assets/styles/App.scss';
-
 
 const Home = () => {
 
@@ -19,9 +17,7 @@ const Home = () => {
     console.log( initialState );
 
     return (
-        <div className="App">
-
-            <Header></Header>
+        <React.Fragment>
 
             <Search></Search>
 
@@ -56,9 +52,7 @@ const Home = () => {
                 </Carousel>
             </Category>
 
-            <Footer></Footer>
-
-        </div>
+        </React.Fragment>
     )
 };
 
