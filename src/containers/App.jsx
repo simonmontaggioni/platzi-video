@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import '../assets/styles/App.scss';
@@ -7,30 +7,45 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
 
-const App = () => (
-    <div className="App">
+const App = () => {
 
-        <Header></Header>
+    const APIURL = 'http://192.168.0.110:3000/initialState';
 
-        <Search></Search>
+    const [ videos, setVideos ] = useState([]);
 
-        <Category title = 'Movies list'>
+    useEffect(()=>{
+        fetch( APIURL )
+            .then( response => response.json() )
+            .then( data => setVideos(data) );
+    }, []);
 
-            <Carousel>
+    console.log( videos );
 
-                <CarouselItem></CarouselItem>
-                <CarouselItem></CarouselItem>
-                <CarouselItem></CarouselItem>
-                <CarouselItem></CarouselItem>
-                <CarouselItem></CarouselItem>
+    return (
+        <div className="App">
 
-            </Carousel>
+            <Header></Header>
 
-        </Category>
+            <Search></Search>
 
-        <Footer></Footer>
+            <Category title = 'Movies list'>
 
-    </div>
-);
+                <Carousel>
+
+                    <CarouselItem></CarouselItem>
+                    <CarouselItem></CarouselItem>
+                    <CarouselItem></CarouselItem>
+                    <CarouselItem></CarouselItem>
+                    <CarouselItem></CarouselItem>
+
+                </Carousel>
+
+            </Category>
+
+            <Footer></Footer>
+
+        </div>
+    )
+};
 
 export default App;
