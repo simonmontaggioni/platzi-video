@@ -1,25 +1,22 @@
 import React, {useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
-import '../assets/styles/App.scss';
 import Category from '../components/Category';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
 
+import useInitialState from '../hooks/useInitialState';
+import '../assets/styles/App.scss';
+
+
 const App = () => {
 
     const APIURL = 'http://192.168.0.110:3000/initialState';
 
-    const [ videos, setVideos ] = useState([]);
-
-    useEffect(()=>{
-        fetch( APIURL )
-            .then( response => response.json() )
-            .then( data => setVideos(data) );
-    }, []);
-
-    console.log( videos );
+    
+    const initialState = useInitialState( APIURL );
+    console.log( initialState );
 
     return (
         <div className="App">
@@ -29,11 +26,14 @@ const App = () => {
             <Search></Search>
 
             {
-                videos.mylist &&
-                videos.mylist.length > 0 &&
+                initialState.mylist &&
+                initialState.mylist.length > 0 &&
                 <Category title = 'Mi lista'>
                     <Carousel>
-                        <CarouselItem></CarouselItem>
+                    { 
+                        initialState.mylist &&
+                        initialState.mylist.map ( item => <CarouselItem key={item.id} {...item} /> )
+                    }
                     </Carousel>
                 </Category>
             }
@@ -41,8 +41,8 @@ const App = () => {
             <Category title = 'Tendencia'>
                 <Carousel>
                     { 
-                        videos.trends &&
-                        videos.trends.map ( item => <CarouselItem key={item.id} {...item} /> )
+                        initialState.trends &&
+                        initialState.trends.map ( item => <CarouselItem key={item.id} {...item} /> )
                     }
                 </Carousel>
             </Category>
@@ -50,8 +50,8 @@ const App = () => {
             <Category title = 'Originals'>
                 <Carousel>
                     { 
-                        videos.originals &&
-                        videos.originals.map ( item => <CarouselItem key={item.id} {...item} /> )
+                        initialState.originals &&
+                        initialState.originals.map ( item => <CarouselItem key={item.id} {...item} /> )
                     }
                 </Carousel>
             </Category>
