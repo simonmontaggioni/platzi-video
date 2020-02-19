@@ -1,4 +1,3 @@
-import React, {useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Category from '../components/Category';
@@ -10,7 +9,7 @@ import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
 
-const App = () => {
+const Home = () => {
 
     const APIURL = 'http://192.168.0.110:3000/initialState';
 
@@ -62,4 +61,4 @@ const App = () => {
     )
 };
 
-export default App;
+export default Home;
