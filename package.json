@@ -7,11 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --host 0.0.0.0",
-    "fake-api":"json-server --watch ./initialState.json --host 0.0.0.0"
+    "fake-api": "json-server --watch ./initialState.json --host 0.0.0.0"
   },
   "author": "simon.montaggioni",
   "license": "ISC",
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
