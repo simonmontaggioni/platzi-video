@@ -28,18 +28,32 @@ const App = () => {
 
             <Search></Search>
 
-            <Category title = 'Movies list'>
+            {
+                videos.mylist &&
+                videos.mylist.length > 0 &&
+                <Category title = 'Mi lista'>
+                    <Carousel>
+                        <CarouselItem></CarouselItem>
+                    </Carousel>
+                </Category>
+            }
 
+            <Category title = 'Tendencia'>
                 <Carousel>
-
-                    <CarouselItem></CarouselItem>
-                    <CarouselItem></CarouselItem>
-                    <CarouselItem></CarouselItem>
-                    <CarouselItem></CarouselItem>
-                    <CarouselItem></CarouselItem>
-
+                    { 
+                        videos.trends &&
+                        videos.trends.map ( item => <CarouselItem key={item.id} {...item} /> )
+                    }
                 </Carousel>
+            </Category>
 
+            <Category title = 'Originals'>
+                <Carousel>
+                    { 
+                        videos.originals &&
+                        videos.originals.map ( item => <CarouselItem key={item.id} {...item} /> )
+                    }
+                </Carousel>
             </Category>
 
             <Footer></Footer>
