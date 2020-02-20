@@ -23,3 +23,8 @@ export const registerRequest = ( userData ) => ({
     userData,
 });
 
+export const getVideoSource = ( videoId ) => ({
+    type: 'GET_VIDEO_SOURCE',
+    videoId,
+});
+

@@ -39,6 +39,14 @@ const reducer = (state, action) => {
                 ...state,
                 user: action.userData
             };
+
+        case 'GET_VIDEO_SOURCE':
+            return {
+                ...state,
+                playing: state.trends.find( item => item.id === Number(action.videoId) ) ||
+                         state.originals.find ( item => item.id === Number(action.videoId) ) ||
+                         []
+            };
     
         default:
             return state;
