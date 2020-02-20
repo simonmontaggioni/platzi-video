@@ -13,3 +13,8 @@ export const loginRequest = ( userData ) => ({
     userData,
 });
 
+export const logoutRequest = ( userData ) => ({
+    type: 'LOGOUT_REQUEST',
+    userData,
+});
+
