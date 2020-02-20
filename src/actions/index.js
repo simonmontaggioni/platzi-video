@@ -18,3 +18,8 @@ export const logoutRequest = ( userData ) => ({
     userData,
 });
 
+export const registerRequest = ( userData ) => ({
+    type: 'REGISTER_REQUEST',
+    userData,
+});
+

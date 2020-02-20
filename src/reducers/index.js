@@ -33,6 +33,12 @@ const reducer = (state, action) => {
                 ...state,
                 user: action.userData
             };
+
+        case 'REGISTER_REQUEST':
+            return {
+                ...state,
+                user: action.userData
+            };
     
         default:
             return state;
