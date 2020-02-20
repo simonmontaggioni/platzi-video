@@ -1,6 +1,7 @@
 const reducer = (state, action) => {
 
     switch (action.type) {
+
         case 'SET_FAVORITE':
             const repeatedItem = state.myList.find ( item => item.id == action.payload.id)
             if ( repeatedItem ) {
@@ -14,10 +15,17 @@ const reducer = (state, action) => {
                     action.payload
                 ]
             };
+
         case 'DELETE_FAVORITE':
             return {
                 ...state,
                 myList: state.myList.filter( items => items.id !== action.payload )
+            };
+
+        case 'LOGIN_REQUEST':
+            return {
+                ...state,
+                user: action.userData
             };
     
         default:
