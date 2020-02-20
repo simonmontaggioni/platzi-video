@@ -1,5 +1,24 @@
 const reducer = (state, action) => {
-    return state;
+
+    switch (action.type) {
+        case 'SET_FAVORITE':
+            const repeatedItem = state.myList.find ( item => item.id == action.payload.id)
+            if ( repeatedItem ) {
+                console.log( `the item ${ repeatedItem.id } already exits in the list`);
+                return state;
+            };
+            return {
+                ...state,
+                myList: [
+                    ...state.myList,
+                    action.payload
+                ]
+            };
+    
+        default:
+            return state;
+    }
+
 };
 
 export default reducer;
