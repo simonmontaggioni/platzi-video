@@ -31,26 +31,28 @@ const Header = ( props ) => {
                         :
                         <img src={ userIcon } alt=""/>
                     }
-                    <p>Perfil</p>
                 </div>
-                <ul>
-                    {
-                        isUserLogged
-                        ?
-                        <li><a href="/"> { user.email} </a></li>
-                        :
-                        null
-                    }
-                    <li>
+                <div className="header__menu--list">
+                    <ul>
                         {
                             isUserLogged
                             ?
-                            <a href='#' onClick={ handleLogout }> Cerrar Sesión </a>
+                            <li><a href="/"> { user.email} </a></li>
                             :
-                            <Link to="/login"> Iniciar Sesión </Link>
+                            null
                         }
-                    </li>
-                </ul>
+                        <li>
+                            {
+                                isUserLogged
+                                ?
+                                <a href='#' onClick={ handleLogout }> Cerrar Sesión </a>
+                                :
+                                <Link to="/login"> Iniciar Sesión </Link>
+                            }
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </header>
     );
